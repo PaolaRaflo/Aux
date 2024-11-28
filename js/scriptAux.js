@@ -15,8 +15,8 @@ function validateLogin() {
         return false;
     }
 
-    const correctUsername = 'CPU';
-    const correctPassword = '123';
+    const correctUsername = 'AUXILIAR';
+    const correctPassword = '123456';
 
     if (username === correctUsername && password === correctPassword) {
         sessionStorage.setItem('isAuthenticated', 'true');
@@ -28,7 +28,7 @@ function validateLogin() {
             confirmButtonColor: '#4CAF50'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = '/menu.html';
+                window.location.href = '/menuAux.html';
             }
         });
         return false;
@@ -50,19 +50,19 @@ function checkAuthentication() {
     const currentPath = window.location.pathname;
 
     // Redirige a index.html si no está autenticado y no está en la página de inicio de sesión
-    if (!isAuthenticated && !currentPath.endsWith('/index.html') && !currentPath.endsWith('index.html')) {
-        window.location.href = '/index.html';
+    if (!isAuthenticated && !currentPath.endsWith('/indexAux.html') && !currentPath.endsWith('/indexAux.html')) {
+        window.location.href = '/indexAux.html';
     }
 }
 
 // Función para cerrar sesión
 function logout() {
     sessionStorage.removeItem('isAuthenticated');
-    window.location.href = '/index.html';
+    window.location.href = '/indexAux.html';
 }
 
 // Llama a checkAuthentication en cada página cargada, excepto en index.html
-if (!window.location.pathname.endsWith('/index.html') && !window.location.pathname.endsWith('index.html')) {
+if (!window.location.pathname.endsWith('/indexAux.html') && !window.location.pathname.endsWith('/indexAux.html')) {
     window.onload = checkAuthentication;
 }
 
